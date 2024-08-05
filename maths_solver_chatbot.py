@@ -82,7 +82,7 @@ for msg in st.session_state.messages:
 
 if prompt:=st.chat_input():
     with st.spinner("Generate response.."):
-        st.session_state.messages.append({"role": "user", "content": question})
+        st.session_state.messages.append({"role": "user", "content":prompt})
         st.chat_message("user").write(prompt)
 
         st_cb = StreamlitCallbackHandler(st.container(), expand_new_thoughts=False)
