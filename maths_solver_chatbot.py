@@ -83,7 +83,7 @@ for msg in st.session_state.messages:
 if prompt:=st.chat_input():
     with st.spinner("Generate response.."):
         st.session_state.messages.append({"role": "user", "content": question})
-        st.chat_message("user").write(question)
+        st.chat_message("user").write(prompt)
 
         st_cb = StreamlitCallbackHandler(st.container(), expand_new_thoughts=False)
         response = assistant_agent.run(st.session_state.messages, callbacks=[st_cb]
