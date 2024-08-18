@@ -51,7 +51,6 @@ prompt_template=PromptTemplate(
     template=prompt
 )
 
-## Combine all the tools into chain
 chain=LLMChain(llm=llm,prompt=prompt_template)
 
 reasoning_tool=Tool(
@@ -60,7 +59,6 @@ reasoning_tool=Tool(
     description="A tool for answering logic-based and reasoning questions."
 )
 
-## initialize the agents
 
 assistant_agent=initialize_agent(
     tools=[wikipedia_tool,calculator,reasoning_tool],
@@ -78,7 +76,6 @@ if "messages" not in st.session_state:
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg['content'])
 
-## LEts start the interaction
 
 if prompt:=st.chat_input():
     with st.spinner("Generate response.."):
